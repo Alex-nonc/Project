@@ -1,6 +1,6 @@
 Стэк
 -------------------------
-⋅⋅*PostgreSQL
-⋅⋅*Express
+⋅⋅PostgreSQL
+⋅⋅Express
 ⋅⋅*React
 ⋅⋅*Node JS
