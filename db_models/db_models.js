@@ -26,7 +26,7 @@ const Sign_up = sequelize.define ('Sign_up', {
     sign_up_email: {type: DataTypes.STRING, unique: true, allowNull: false},
     sign_up_passwd: {type: DataTypes.STRING, allowNull: false},
     sign_up_name: {type: DataTypes.STRING, allowNull: false},
-    sign_up_role: {type: DataTypes.STRING, allowNull: false},
+    sign_up_role: {type: DataTypes.STRING, allowNull: false, defaultValue: 'client' },
 })
 
 const Comments = sequelize.define ('Comments', {
