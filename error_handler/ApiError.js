@@ -1,3 +1,5 @@
+// Универсальный обработчик ошибок с состояниями
+
 class ApiError extends Error {
     constructor(status, message) {
         super();

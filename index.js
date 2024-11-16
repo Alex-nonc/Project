@@ -7,6 +7,8 @@ const cors = require('cors')
 const router = require('./routes/indexRouter.js')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware.js')
 
+// Файл запуска сервера
+
 const app = express()
 app.use(cors())
 app.use(express.json())

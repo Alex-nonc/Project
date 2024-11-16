@@ -1,6 +1,8 @@
 const sequelize = require('../db')
 const {DataTypes} = require('sequelize')
 
+// ORM-модели для связи с БД
+
 const Contact_data = sequelize.define ('Contact_data', {
     contact_data_id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     contact_data_name: {type: DataTypes.STRING, allowNull: false},

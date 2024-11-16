@@ -1,5 +1,7 @@
 const ApiError = require('../error_handler/ApiError.js')
 
+// Контроллер по post/get для зарегированных пользователей
+
 class SignUpController {
     async registration(req, res) {
     }

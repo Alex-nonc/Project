@@ -1,6 +1,8 @@
 const Router = require('express')
 const contactdataController = require('../controllers/contactdataController')
 
+// Маршрутизация для контактных данных
+
 const router = new Router()
 
 router.post('/', contactdataController.create) 
