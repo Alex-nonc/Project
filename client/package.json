@@ -2,7 +2,10 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "extends": ["@babel/plugin-transform-private-property-in-object", "next/core-web-vitals"],
+  "extends": [
+    "@babel/plugin-transform-private-property-in-object",
+    "next/core-web-vitals"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -10,6 +13,7 @@
     "ajv": "^8.17.1",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
+    "mobx": "^6.13.5",
     "mobx-react-lite": "^4.0.7",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.6",

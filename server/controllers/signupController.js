@@ -5,6 +5,13 @@ const { Sign_up } = require('../db_models/db_models.js')
 
 // Контроллер по post/get для зарегированных пользователей
 
+function isEmail(email) {
+    var emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    if (email !== '' && email.match(emailFormat)) { return true; }
+    
+    return false;
+}
+
 const generateJwt = function(sign_up_id, sign_up_email, sign_up_role) {
     return token = jwt.sign(
         {sign_up_id, sign_up_email, sign_up_role}, 
@@ -16,7 +23,7 @@ const generateJwt = function(sign_up_id, sign_up_email, sign_up_role) {
 class SignUpController {
     async registration(req, res, next) {
         const {sign_up_id, sign_up_phone, sign_up_email, sign_up_passwd, sign_up_name, sign_up_role} = req.body
-        if (!sign_up_email || !sign_up_passwd) {
+        if (!sign_up_passwd || isEmail(sign_up_email) === false) {
             return next(ApiError.badRequest(`Неккоретный email или password`))
         }
         const candidate = await Sign_up.findOne({where: {sign_up_email}})

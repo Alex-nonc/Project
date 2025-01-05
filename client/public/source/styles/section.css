@@ -1,40 +1,47 @@
 html {
     height: 100%;
     overflow-x: hidden;
-    
-}
-body {
-    overflow: hidden;
 }
 .background {
     
     
-    background-image: url("background_image.png");
+    background-image: url("../images/background.jpg");
+    
     
     background-size: 100%;
     height: 100vh;
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin-bottom: 150px;
+    background-position: center center;
+    
     
 }
 .gradient {
     background-image: -webkit-linear-gradient(
-            rgba(10, 150, 235, 0.2),
-            rgba(0, 0, 0, 0)
-          );
-          height: 900px;
+        rgba(10, 20, 80, 0.6),   /* Темно-синий с большей непрозрачностью */
+        rgba(0, 0, 0, 0.5)      /* Почти черный для более сильного затемнения */
+    );
+          height: 100vh;
         
 }
 .front-text {
     
+    
+    color: rgba(255, 255, 255, 1);  /* Яркий белый текст */
+    text-shadow:
+        0 0 10px #4a6dfb,  /* Яркое начальное свечение */
+        0 0 20px #6584fa,  /* Усиление синего цвета */
+        0 0 40px #82a1ff,  /* Голубое свечение */
+        0 0 80px #a1c8ff,  /* Усиленное голубое свечение */
+        0 0 150px #ffffff;
     padding-top: 250px;
     padding-left: 0%;
     font-family: sans-serif;
-    color: white;
+    
     font-weight: bold;
     font-size: 3vh;
-    text-shadow: 0px 2px 1px rgba(0, 0, 0, 1);
+    
     text-align: center;
 }
 .front-text>h1 {
@@ -450,4 +457,10 @@ line-height: 36px
 .rec_container {
     padding-top: 30px;
     padding-left: 18%;
+}
+.card h1 {
+    font-size: 18px;
+    line-height: 1.55;
+    font-family: 'TildaSans',Arial,sans-serif;
+    font-weight: 0;
 }
