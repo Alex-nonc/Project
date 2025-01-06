@@ -441,8 +441,6 @@ line-height: 36px
 }
 .content.active {
     display: block;
-    
-    
 }
 .content.active>ul>p {
     font-size: 18px;

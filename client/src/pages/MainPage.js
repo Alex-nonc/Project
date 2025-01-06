@@ -1,9 +1,9 @@
 import React from 'react';
-import  '../components/rules.js'
 import { BRON_ROUTE } from '../utils/consts';
 import { NavLink } from 'react-router-dom';
 
 const MainPage = () => {
+  const [currentId, setCurrentId] = React.useState(1);
     return (
 <>
   <header>
@@ -357,18 +357,18 @@ const MainPage = () => {
         <div className="tabs">
           <div
             className="tab active"
-            onclick="changerulesslides(event,`general`)"
+            onChange={() => setCurrentId(1)}
           >
             Общие
           </div>
-          <div className="tab" onclick="changerulesslides(event,'prohibited')">
+          <div className="tab" onChange={() => setCurrentId(2)}>
             ЗАПРЕЩАЕТСЯ
           </div>
-          <div className="tab" onclick="changerulesslides(event,'violations')">
+          <div className="tab" onChange={() => setCurrentId(3)}>
             НАРУШЕНИЯ
           </div>
         </div>
-        <div id="general" className="content active">
+        <div id="general" className={currentId === 1 ? ".content.active" : "content"}>
           <h2>ОБЩИЕ ПРАВИЛА ПОСЕЩЕНИЯ КОМПЛЕКСА «HypeBeach»</h2>
           <ul>
             <li>
@@ -412,7 +412,7 @@ const MainPage = () => {
             </li>
           </ul>
         </div>
-        <div id="prohibited" className="content">
+        <div id="prohibited" className={currentId === 2 ? ".content.active" : "content"}>
           <h2>ПРАВИЛАМИ ПОСЕЩЕНИЯ КОМПЛЕКСА ЗАПРЕЩАЕТСЯ:</h2>
           <ul>
             <li>
@@ -478,7 +478,7 @@ const MainPage = () => {
             <li>Подавать ложные сигналы о бедствии.</li>
           </ul>
         </div>
-        <div id="violations" className="content">
+        <div id="violations" className={currentId === 3 ? ".content.active" : "content"}>
           <h2>
             ПРЕЙСКУРАНТ ЗА НЕСОБЛЮДЕНИЕ ПРАВИЛ ПОСЕЩЕНИЯ КОМПЛЕКСА
             <br /> «HypeBeach»
