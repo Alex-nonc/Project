@@ -1,8 +1,8 @@
 import React, {} from 'react';
-import { BRON_ROUTE } from '../utils/consts';
+import { BRON_ROUTE, LOGIN_ROUTE } from '../utils/consts';
 import { NavLink } from 'react-router-dom';
 
-const MainPage = ({button}) => {
+const MainPage = () => {
   const [currentId, setCurrentId] = React.useState(1);
     return (
 <>
@@ -26,6 +26,9 @@ const MainPage = ({button}) => {
             <a href="#target_section5">Правила посещения</a>
           </li>
           <li>Контакты</li>
+          <li>
+            <NavLink to={LOGIN_ROUTE}>Вход</NavLink>
+          </li>
         </ul>
         <div className="right">
           <div className="number">+7 (923) 634-00-72</div>
@@ -356,7 +359,7 @@ const MainPage = ({button}) => {
       <div className="rules">
         <div className="tabs">
           <button
-            className="tab active"
+            className="tab"
             onClick={() => setCurrentId(1)}
           >
             Общие
@@ -368,7 +371,7 @@ const MainPage = ({button}) => {
             НАРУШЕНИЯ
           </button>
         </div>
-        <div id="general" className={currentId === 1 ? ".content.active" : "content"}>
+        <div id="general" className={currentId === 1 ? "content active" : "content"}>
           <h2>ОБЩИЕ ПРАВИЛА ПОСЕЩЕНИЯ КОМПЛЕКСА «HypeBeach»</h2>
           <ul>
             <li>
@@ -412,7 +415,7 @@ const MainPage = ({button}) => {
             </li>
           </ul>
         </div>
-        <div id="prohibited" className={currentId === 2 ? ".content.active" : "content"}>
+        <div id="prohibited" className={currentId === 2 ? "content active" : "content"}>
           <h2>ПРАВИЛАМИ ПОСЕЩЕНИЯ КОМПЛЕКСА ЗАПРЕЩАЕТСЯ:</h2>
           <ul>
             <li>
@@ -478,7 +481,7 @@ const MainPage = ({button}) => {
             <li>Подавать ложные сигналы о бедствии.</li>
           </ul>
         </div>
-        <div id="violations" className={currentId === 3 ? ".content.active" : "content"}>
+        <div id="violations" className={currentId === 3 ? "content active" : "content"}>
           <h2>
             ПРЕЙСКУРАНТ ЗА НЕСОБЛЮДЕНИЕ ПРАВИЛ ПОСЕЩЕНИЯ КОМПЛЕКСА
             <br /> «HypeBeach»
