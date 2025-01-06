@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {} from 'react';
 import { BRON_ROUTE } from '../utils/consts';
 import { NavLink } from 'react-router-dom';
 
-const MainPage = () => {
+const MainPage = ({button}) => {
   const [currentId, setCurrentId] = React.useState(1);
     return (
 <>
@@ -355,18 +355,18 @@ const MainPage = () => {
       </strong>
       <div className="rules">
         <div className="tabs">
-          <div
+          <button
             className="tab active"
-            onChange={() => setCurrentId(1)}
+            onClick={() => setCurrentId(1)}
           >
             Общие
-          </div>
-          <div className="tab" onChange={() => setCurrentId(2)}>
+          </button>
+          <button className="tab" onClick={() => setCurrentId(2)}>
             ЗАПРЕЩАЕТСЯ
-          </div>
-          <div className="tab" onChange={() => setCurrentId(3)}>
+          </button>
+          <button className="tab" onClick={() => setCurrentId(3)}>
             НАРУШЕНИЯ
-          </div>
+          </button>
         </div>
         <div id="general" className={currentId === 1 ? ".content.active" : "content"}>
           <h2>ОБЩИЕ ПРАВИЛА ПОСЕЩЕНИЯ КОМПЛЕКСА «HypeBeach»</h2>
