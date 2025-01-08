@@ -1,16 +1,9 @@
 const ApiError = require('../error_handler/ApiError.js')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const { Sign_up } = require('../db_models/db_models.js')
+const { Sign_up } = require('../db_models/db_models')
 
 // Контроллер по post/get для зарегированных пользователей
-
-function isEmail(email) {
-    var emailFormat = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-    if (email !== '' && email.match(emailFormat)) { return true; }
-    
-    return false;
-}
 
 const generateJwt = function(sign_up_id, sign_up_email, sign_up_role) {
     return token = jwt.sign(
@@ -23,7 +16,7 @@ const generateJwt = function(sign_up_id, sign_up_email, sign_up_role) {
 class SignUpController {
     async registration(req, res, next) {
         const {sign_up_id, sign_up_phone, sign_up_email, sign_up_passwd, sign_up_name, sign_up_role} = req.body
-        if (!sign_up_passwd || isEmail(sign_up_email) === false) {
+        if (!sign_up_passwd || !sign_up_email) {
             return next(ApiError.badRequest(`Неккоретный email или password`))
         }
         const candidate = await Sign_up.findOne({where: {sign_up_email}})
@@ -32,7 +25,7 @@ class SignUpController {
         }
         const hashedPasswd = await bcrypt.hash(sign_up_passwd, 5)
         const user = await Sign_up.create({sign_up_id, sign_up_phone, sign_up_email, sign_up_passwd: hashedPasswd, sign_up_name, sign_up_role})
-        token = generateJwt(user.sign_up_id, user.sign_up_email, user.sign_up_passwd)
+        const token = generateJwt(user.sign_up_id, user.sign_up_email, user.sign_up_passwd, user.sign_up_role)
         return res.json({token})
     }
     async login(req, res, next) {

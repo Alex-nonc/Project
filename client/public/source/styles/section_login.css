@@ -24,13 +24,13 @@
     transition: 0.5s;
     margin: 10px;
     padding: 7px 12px;
-    font-size: 22px;
+    font-size: 24px;
     display: inline-block;
 }
 
 .login_inputs{
     font-family: Tahoma;
-    font-size: 16px;
+    font-size: 24px;
 }
 
 .login_btn:hover{
@@ -46,11 +46,14 @@
     -khtml-border-radius: 3px; 
     background: #ffffff !important; 
     outline: none; 
-    height: 24px; 
-    width: 120px;
+    min-width: 217.4px;
+    height: 35px; 
     color: #000000; 
-    font-size: 11px;
+    font-size: 24px;
     font-family: Tahoma; 
-    display: inline-flex;
-    flex-direction: column-reverse;
+}
+
+.reg_email {
+    text-align: left;
+    margin-left: 12%; 
 }

@@ -1,10 +1,10 @@
-import { Component } from "react"
 import Admin from "./pages/Admin"
 import Bron from "./pages/Bron"
-import Auth from "./pages/Auth"
+import Registration from "./pages/Registration"
 import Main from "./pages/MainPage"
 import Blog from "./pages/Blog"
 import { ADMIN_ROUTE, BLOG_ROUTE, BRON_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from "./utils/consts"
+import Login from "./pages/Login"
 
 export const adminRoutes = [
     {
@@ -20,11 +20,11 @@ export const publicRoutes = [
     },
     {
         path: LOGIN_ROUTE,
-        Component: Auth
+        Component: Login
     },
     {
         path: REGISTRATION_ROUTE,
-        Component: Auth
+        Component: Registration
     },
     {
         path: MAIN_ROUTE,

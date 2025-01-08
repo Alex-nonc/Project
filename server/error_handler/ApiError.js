@@ -21,6 +21,20 @@ class ApiError extends Error {
     static internal(message) {
         return new ApiError(500, message);
     }
+
+    static notFound(message) {
+        return new ApiError(404, message);
+    }
+
+    static conflict(message) {
+        return new ApiError(409, message);
+    }
+
+    static unprocessableEntity(message) {
+        return new ApiError(422, message);
+    }
+
+    
 }
 
 module.exports = ApiError

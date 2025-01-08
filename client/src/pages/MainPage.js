@@ -1,8 +1,9 @@
 import React, {} from 'react';
-import { BRON_ROUTE, LOGIN_ROUTE } from '../utils/consts';
+import { BLOG_ROUTE, BRON_ROUTE, LOGIN_ROUTE } from '../utils/consts';
 import { NavLink } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 
-const MainPage = () => {
+const MainPage = observer(() => {
   const [currentId, setCurrentId] = React.useState(1);
     return (
 <>
@@ -25,9 +26,11 @@ const MainPage = () => {
           <li>
             <a href="#target_section5">Правила посещения</a>
           </li>
-          <li>Контакты</li>
           <li>
             <NavLink to={LOGIN_ROUTE}>Вход</NavLink>
+          </li>
+          <li>
+            <NavLink to={BLOG_ROUTE}>Отзывы</NavLink>
           </li>
         </ul>
         <div className="right">
@@ -578,6 +581,6 @@ const MainPage = () => {
 </>
 
     );
-}
+})
 
 export default MainPage;
