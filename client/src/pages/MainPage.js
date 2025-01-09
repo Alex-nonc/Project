@@ -368,7 +368,7 @@ const MainPage = () => {
             НАРУШЕНИЯ
           </div>
         </div>
-        <div id="general" className={currentId === 1 ? ".content.active" : "content"}>
+        <div id="general" className={currentId === 1 ? "content active" : "content"}>
           <h2>ОБЩИЕ ПРАВИЛА ПОСЕЩЕНИЯ КОМПЛЕКСА «HypeBeach»</h2>
           <ul>
             <li>
@@ -412,7 +412,7 @@ const MainPage = () => {
             </li>
           </ul>
         </div>
-        <div id="prohibited" className={currentId === 2 ? ".content.active" : "content"}>
+        <div id="prohibited" className={currentId === 2 ? "content active" : "content"}>
           <h2>ПРАВИЛАМИ ПОСЕЩЕНИЯ КОМПЛЕКСА ЗАПРЕЩАЕТСЯ:</h2>
           <ul>
             <li>
@@ -478,7 +478,7 @@ const MainPage = () => {
             <li>Подавать ложные сигналы о бедствии.</li>
           </ul>
         </div>
-        <div id="violations" className={currentId === 3 ? ".content.active" : "content"}>
+        <div id="violations" className={currentId === 3 ? "content active" : "content"}>
           <h2>
             ПРЕЙСКУРАНТ ЗА НЕСОБЛЮДЕНИЕ ПРАВИЛ ПОСЕЩЕНИЯ КОМПЛЕКСА
             <br /> «HypeBeach»

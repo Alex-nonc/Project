@@ -203,7 +203,7 @@ font-size: 15px;
     border-radius: 20px 20px 20px 20px;
     margin-right: 10px;
 }
-.tabs {
+.bron-tabs {
     padding-top: 20px;
     display: flex;
     flex-direction: row;
@@ -211,7 +211,7 @@ font-size: 15px;
     border-bottom: 1px solid #717171;
 
 }
-.tab {
+.bron-tab {
     
     font-weight: 100;
     outline: none;
@@ -224,23 +224,23 @@ font-size: 15px;
   line-height: 1.35;
   font-family: 'TildaSans',Arial,sans-serif;
 }
-.tab.active {
+.bron-tab.active {
     background: #f89224;
     color: #fff;
     border-radius: 20px 2px 20px 2px;
     transition: 0.2s;
     
 }
-.tab:hover {
+.bron-tab:hover {
     background:#f89224;
     color: #fff;
     border-radius: 20px 2px 20px 2px;
     transition: 0.2s;
 }
-.content {
+.bron-content {
     display: none;
 }
-.content.active {
+.bron-content.active {
 
     align-items: center;
     flex-direction: column;
@@ -249,7 +249,7 @@ font-size: 15px;
     display: flex;
     justify-content: space-between;
 }
-.content.active button {
+.bron-content.active button {
     border-style: none;
     background-color: #f89224;
     cursor: pointer;

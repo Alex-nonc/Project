@@ -77,27 +77,27 @@ const Bron = () => {
         </div>
         <div style={{ marginInline: "2vw" }} className="card">
           <div className="tab-menu">
-            <div className="tabs">
+            <div className="bron-tabs">
               <div
-                className="tab active"
+                className="bron-tab active"
                 onclick="changerulesslides(event,'grown')"
               >
                 Взрослый
               </div>
-              <div className="tab" onclick="changerulesslides(event,'child')">
+              <div className="bron-tab" onclick="changerulesslides(event,'child')">
                 Детский
               </div>
-              <div className="tab" onclick="changerulesslides(event,'student')">
+              <div className="bron-tab" onclick="changerulesslides(event,'student')">
                 Студенческий
               </div>
               <div
-                className="tab"
+                className="bron-tab"
                 onclick="changerulesslides(event,'VIP zone')"
               >
                 VIP zone
               </div>
             </div>
-            <div id="grown" className="content active">
+            <div id="grown" className="bron-content active">
               <div className="text-container">
                 <div className="text-row">
                   - Возможность пользоваться всеми преимуществами комплекса.
@@ -129,7 +129,7 @@ const Bron = () => {
               </div>
               <button id="buy1">В корзину</button>
             </div>
-            <div id="child" className="content">
+            <div id="child" className="bron-content">
               <div className="text-container">
                 <div className="text-row">
                   - Возможность пользоваться всеми преимуществами комплекса.
@@ -158,7 +158,7 @@ const Bron = () => {
               </div>
               <button id="buy2">В корзину</button>
             </div>
-            <div id="student" className="content">
+            <div id="student" className="bron-content">
               <div className="text-container">
                 <div className="text-row">
                   - Возможность пользоваться всеми преимуществами комплекса.
@@ -190,7 +190,7 @@ const Bron = () => {
               </div>
               <button id="buy3">В корзину</button>
             </div>
-            <div id="VIP zone" className="content">
+            <div id="VIP zone" className="bron-content">
               <div className="text-container">
                 <div className="text-row">
                   - Возможность пользоваться всеми преимуществами комплекса.
