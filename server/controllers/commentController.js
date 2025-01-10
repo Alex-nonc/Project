@@ -9,6 +9,11 @@ class CommentController {
         const comments = await Comments.create({comments_date, comments_comment})
         return res.json(comments)
     }
+    async getName(req, res) {
+        const {comments_comment} = req.body
+        const comments = await Comments.findOne({where: {comments_comment}})
+        return res.json(comments)
+    }
     async getAll(req, res) {
         const comments = await Comments.findAll()
         return res.json(comments)

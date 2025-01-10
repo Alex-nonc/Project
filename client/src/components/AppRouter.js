@@ -5,7 +5,7 @@ import { MAIN_ROUTE } from '../utils/consts';
 import { Context } from '../index';
 import { observer } from 'mobx-react-lite';
 
-const AppRouter = observer(() => {
+const AppRouter = () => {
     const {user} = useContext(Context)
 
     console.log(user)
@@ -20,6 +20,6 @@ const AppRouter = observer(() => {
             <Route path="*" element={<Navigate to={MAIN_ROUTE} />}/>
         </Routes>
     );
-})
+}
 
 export default AppRouter;

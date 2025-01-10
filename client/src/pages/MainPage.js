@@ -1,58 +1,10 @@
 import React, {} from 'react';
-import { BLOG_ROUTE, BRON_ROUTE, LOGIN_ROUTE } from '../utils/consts';
-import { NavLink } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
 const MainPage = observer(() => {
   const [currentId, setCurrentId] = React.useState(1);
     return (
 <>
-  <header>
-    <nav className="sticky">
-      <div className="navbar">
-        <ul className="navlist-1">
-          <li>
-            <a href="#target_section1">Взрослый бассейн</a>
-          </li>
-          <li>
-            <a href="#target_section2">Детский бассейн</a>
-          </li>
-          <li>
-            <a href="#target_section3">Кафе</a>
-          </li>
-          <li>
-            <a href="#target_section4">Стоимость</a>
-          </li>
-          <li>
-            <a href="#target_section5">Правила посещения</a>
-          </li>
-          <li>
-            <NavLink to={LOGIN_ROUTE}>Вход</NavLink>
-          </li>
-          <li>
-            <NavLink to={BLOG_ROUTE}>Отзывы</NavLink>
-          </li>
-        </ul>
-        <div className="right">
-          <div className="number">+7 (923) 634-00-72</div>
-          <div className="social-media-images">
-            <a href="https://vk.com/hypebeachnvkz" target="_blank">
-              <img src="source/images/vk.png" alt="" />
-            </a>
-            <a
-              href="https://www.instagram.com/hype_beach_?igsh=NTc4MTIwNjQ2YQ=="
-              target="_blank"
-            >
-              <img src="source/images/instagram.png" alt="" />
-            </a>
-          </div>
-          <a>
-            <NavLink className="bronirovat" to={BRON_ROUTE}>Забронировать</NavLink>
-          </a>
-        </div>
-      </div>
-    </nav>
-  </header>
   <section>
     <div className="background">
       <div className="gradient">

@@ -4,6 +4,25 @@
     text-decoration: none;
 }
 
+.login_main_btn {
+    font-size: 1vw;
+    border: none;
+    background: transparent;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:white;
+    font-weight: bold;
+    text-transform: uppercase;
+    
+}
+
+.login_main_btn:hover {
+    color:white;
+}
+
+.login_main_btn:active {
+    color: white;
+}
+
 .sticky {
     position: fixed;  
     z-index: 10; 

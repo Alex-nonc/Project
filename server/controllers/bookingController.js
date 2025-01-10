@@ -4,9 +4,9 @@ const ApiError = require('../error_handler/ApiError.js');
 // Контроллер по post/get для брони билетов
 
 class BookingController {
-    async create(req, res) {
-        const {booking_quantity, booking_date} = req.body
-        const booking = await Booking.create({booking_quantity, booking_date})
+    async createBooking(req, res) {
+        const {booking_quantity, booking_summ_prices, booking_date} = req.body
+        const booking = await Booking.create({booking_quantity, booking_summ_prices, booking_date})
         return res.json(booking)
     }
     async getAll(req, res) {

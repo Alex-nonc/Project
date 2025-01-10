@@ -2,65 +2,43 @@ import React from "react";
 import { MAIN_ROUTE } from "../utils/consts";
 import { NavLink } from "react-router-dom";
 import { observer } from "mobx-react-lite";
+import { useState } from "react";
 
 const Blog = observer(() => {
+  const [comments_name, setName] = useState("");
+  const [comments_comment, setComment] = useState("");
   return (
     <div>
-      <header>
-        <nav className="sticky">
-          <div className="navbar">
-            <ul className="navlist-1">
-              <li>
-                <NavLink to={MAIN_ROUTE}>
-                  <a style={{ fontSize: 20 }}>
-                    <img
-                      style={{ width: 12 }}
-                      src="images/arrow-right-solid.svg"
-                      alt=""
-                    />
-                    Вернуться на главную
-                  </a>
-                </NavLink>
-              </li>
-            </ul>
-            <div className="right">
-              <div className="number">+7 (923) 507-30-70</div>
-              <div className="social-media-images">
-                <a href="https://vk.com/hypebeachnvkz" target="_blank">
-                  <img src="images/vk.png" alt="" />
-                </a>
-                <a
-                  href="https://www.instagram.com/hype_beach_?igsh=NTc4MTIwNjQ2YQ=="
-                  target="_blank"
-                >
-                  <img src="images/instagram.png" alt="" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </header>
-      <div>
-        <label>
-          Имя:{" "}
-          <input
-            type="text"
-            //value={this.state.form.name}
-            name="name"
-            //onChange={this.handleChange}
-          />
+      <div className="comments_blocks">
+      <label className="lbl_comment_block">
+          <label className="lbl_comment_block"></label>
+          <p>
+            <textarea
+              className="textarea_comment_block"
+              name="comment"
+              //value={this.state.form.comment}
+              //onChange={this.handleChange}
+            ></textarea>
+          </p>
         </label>
-        <label>
-          Комментарий:{" "}
-          <textarea
-            name="comment"
-            //value={this.state.form.comment}
-            //onChange={this.handleChange}
-          ></textarea>
+      </div>
+      <div className="comment_user_block">
+        <label className="lbl_comment_user_block">
+          <label className="lbl_comment_user_block">Написать комментарий</label>
+          <p>
+            <textarea
+              className="textarea_comment_user_block"
+              name="comment"
+              //value={this.state.form.comment}
+              //onChange={this.handleChange}
+            ></textarea>
+          </p>
         </label>
-        <button 
+        <button id="add_comment"
         //onClick={this.addComment}
-        >Добавить комментарий</button>
+        >
+          Добавить комментарий
+        </button>
       </div>
     </div>
   );
