@@ -5,6 +5,11 @@ export const createContactData = async (contact_data_name, contact_data_surname,
     return response
 }
 
+export const getOneContactData = async (contact_data_name) => {
+    const response = await $host.post("api/contactdata", {contact_data_name});
+    return response
+}
+
 export const createBooking = async (booking_quantity, booking_summ_prices, booking_date) => {
     const response = await $host.post("api/booking", {booking_quantity, booking_summ_prices, booking_date});
     return response

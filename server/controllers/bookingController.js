@@ -6,7 +6,7 @@ const ApiError = require('../error_handler/ApiError.js');
 class BookingController {
     async createBooking(req, res) {
         const {booking_quantity, booking_summ_prices, booking_date} = req.body
-        const booking = await Booking.create({booking_quantity, booking_summ_prices, booking_date})
+        const booking = await Booking.create({booking_quantity, booking_summ_prices, booking_date, ContactDatumContactDataId, TypeClientTypeClientId})
         return res.json(booking)
     }
     async getAll(req, res) {

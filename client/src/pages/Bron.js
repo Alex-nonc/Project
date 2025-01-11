@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import { useState, useEffect } from "react";
-import { createBooking, createContactData } from "../http/clientAPI";
+import { createBooking, createContactData, getOneContactData } from "../http/clientAPI";
 
 const Bron = observer(() => {
   const [currentId, setCurrentId] = React.useState(1);
@@ -176,23 +176,33 @@ const Bron = observer(() => {
     }
 
     try {
-      let data1;
-      let data2;
-      let contact_dataID
+      let data1
       data1 = await createContactData(
         contact_data_name,
         contact_data_surname,
         contact_data_email,
         contact_data_phone
       );
-      data2 = await createBooking(
-        booking_quantity,
-        booking_summ_prices,
-        booking_date
-      );
+      let contact_dataID
+      contact_dataID = await getOneContactData(contact_data_name, contact_data_surname, contact_data_phone);
+      let data2
+      for (const i in counts){
+        if (counts[i] === 0){
+          continue;
+        }
+        else {
+          data2 = await createBooking(
+            booking_quantity,
+            booking_summ_prices,
+            booking_date,
+            contact_dataID,
+            1
+          );
+        }
+      }
       alert("Форма заполнена корректно!");
     } catch (e) {
-      alert(e.response.data1.message);
+      alert(e.message);
     }
   };
 

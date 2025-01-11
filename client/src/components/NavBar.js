@@ -38,7 +38,7 @@ const NavBar = observer(() => {
     ) : (
         <button className="login_main_btn"
         >
-          <NavLink to={LOGIN_ROUTE}>Вход</NavLink>
+          <NavLink className = "login_main_btn" to={LOGIN_ROUTE}>Вход</NavLink>
         </button>
     )}
       </>

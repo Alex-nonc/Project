@@ -5,9 +5,9 @@ const bookingController = require('../controllers/bookingController')
 
 const router = new Router()
 
-router.post('/', bookingController.create)
+router.post('/', bookingController.createBooking)
 router.get('/', bookingController.getAll)
-router.get('/:id', bookingController.getOne)
+router.get('/', bookingController.getOne)
 router.delete('/delete', bookingController.delete)
 
 module.exports = router
