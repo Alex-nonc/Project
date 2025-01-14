@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { Sign_up } = require('../db_models/db_models')
 
-// Контроллер по post/get для зарегированных пользователей
+// Функция генерации токена на 24ч
 
 const generateJwt = function(sign_up_id, sign_up_email, sign_up_role) {
     return token = jwt.sign(
@@ -12,6 +12,8 @@ const generateJwt = function(sign_up_id, sign_up_email, sign_up_role) {
         {expiresIn: '24h'}
     )
 }
+
+// Контроллер по post/get для регистрации или авторизации пользователей
 
 class SignUpController {
     async registration(req, res, next) {
@@ -30,22 +32,27 @@ class SignUpController {
     }
     async login(req, res, next) {
         const {sign_up_email, sign_up_passwd} = req.body
-        const user = await Sign_up.findOne({where: {sign_up_email}})
+        const user = await Sign_up.findOne({ where: {sign_up_email}})
         if (!user) {
             return next(ApiError.internal('Пользователь не найден'))
         }
-        let comparePassword = bcrypt.compareSync(sign_up_passwd, user.sign_up_passwd)
+        let comparePassword = bcrypt.compareSync(sign_up_passwd, user.sign_up_passwd) // Дешифрование пароля
         if (!comparePassword) {
             return next(ApiError.internal('Указан неверный пароль'))
         }
         const token = generateJwt(user.sign_up_id, user.sign_up_email, user.sign_up_role)
         return res.json({token})
     }
-    async logcheck(req, res) {
+    async logcheck(req, res) { // Провверка токена
         const token = generateJwt(req.user.id, req.user.email, req.user.role)
         return res.json({token})
     }
-    async delete(req, res) {
+    async getName(req, res) { // Вывод имени и ID
+        const {sign_up_email} = req.body
+        const name = await Sign_up.findOne({attributes: ['sign_up_name','sign_up_id'], where: {sign_up_email}}) 
+        return res.json(name)
+    }
+    async delete(req, res) { // Удаление (не нужно)
         const {sign_up_email} = req.body
         const user = await Sign_up.destroy({where : {sign_up_email}})
         return res.json({message : `Удален пользователь: ${sign_up_email}`})

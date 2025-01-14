@@ -6,6 +6,8 @@ import Blog from "./pages/Blog"
 import { ADMIN_ROUTE, BLOG_ROUTE, BRON_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from "./utils/consts"
 import Login from "./pages/Login"
 
+// Определение админ панели и пользовательской
+
 export const adminRoutes = [
     {
         path: ADMIN_ROUTE,

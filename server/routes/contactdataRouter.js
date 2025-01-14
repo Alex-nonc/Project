@@ -5,7 +5,8 @@ const contactdataController = require('../controllers/contactdataController')
 
 const router = new Router()
 
-router.post('/bron', contactdataController.create) 
+router.post('/', contactdataController.createContactData) 
+router.post('/getLastOne', contactdataController.getLastOne) 
 router.delete('/delete', contactdataController.delete)
 
 module.exports = router

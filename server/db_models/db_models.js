@@ -7,21 +7,23 @@ const Contact_data = sequelize.define ('Contact_data', {
     contact_data_id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     contact_data_name: {type: DataTypes.STRING, allowNull: false},
     contact_data_surname: {type: DataTypes.STRING, allowNull: false},
-    contact_data_email: {type: DataTypes.STRING, unique: true, allowNull: true},
+    contact_data_email: {type: DataTypes.STRING, allowNull: false},
     contact_data_phone: {type: DataTypes.STRING, allowNull: false}
-})
-
-const Booking = sequelize.define ('Booking', {
-    booking_id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    booking_quantity: {type: DataTypes.INTEGER, allowNull: false},
-    booking_summ_prices: {type: DataTypes.INTEGER, allowNull: false},
-    booking_date: {type: DataTypes.DATE, allowNull: false}
 })
 
 const Type_client = sequelize.define ('Type_client', {
     type_client_id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     type_client: {type: DataTypes.STRING, allowNull: false},
     type_client_price: {type: DataTypes.INTEGER, allowNull: false},
+})
+
+const Booking = sequelize.define ('Booking', {
+    booking_id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    booking_quantity: {type: DataTypes.INTEGER, allowNull: false},
+    booking_summ_prices: {type: DataTypes.INTEGER, allowNull: false},
+    booking_date: {type: DataTypes.DATE, allowNull: false},
+    booking_client_id: {type: DataTypes.INTEGER, references: {model: Contact_data, key: 'contact_data_id'}},
+    booking_type_client_id: {type: DataTypes.INTEGER, references: {model: Type_client, key: 'type_client_id'}}
 })
 
 const Sign_up = sequelize.define ('Sign_up', {
@@ -35,19 +37,22 @@ const Sign_up = sequelize.define ('Sign_up', {
 
 const Comments = sequelize.define ('Comments', {
     comments_id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    comments_name: {type: DataTypes.STRING, allowNull: false},
     comments_date: {type: DataTypes.DATE, allowNull: false},
-    comments_comment: {type: DataTypes.STRING, allowNull: false}
+    comments_name: {type: DataTypes.STRING, allowNull: false},
+    comments_comment: {type: DataTypes.STRING, allowNull: false},
+    comments_sign_up_id: {type: DataTypes.INTEGER, references: {model: Sign_up, key: 'sign_up_id'}}
 })
 
-Contact_data.hasOne(Booking)
-Booking.belongsTo(Contact_data)
+// Создание внешних ключей и отношений таблиц между собой
 
-Type_client.hasOne(Booking)
-Booking.belongsTo(Type_client)
+Contact_data.hasOne(Booking,{foreignKey: 'booking_client_id'})
+Booking.belongsTo(Contact_data,{foreignKey: 'booking_client_id'})
 
-Sign_up.hasOne(Comments)
-Comments.belongsTo(Sign_up)
+Type_client.hasOne(Booking,{foreignKey: 'booking_type_client_id'})
+Booking.belongsTo(Type_client,{foreignKey: 'booking_type_client_id'})
+
+Sign_up.hasOne(Comments,{foreignKey: 'comments_sign_up_id'})
+Comments.belongsTo(Sign_up,{foreignKey: 'comments_sign_up_id'})
 
 module.exports = {
     Contact_data,

@@ -12,17 +12,14 @@
     color:white;
     font-weight: bold;
     text-transform: uppercase;
-    outline: none;
 }
 
 .login_main_btn:hover {
     color:white;
-    outline: none;
 }
 
 .login_main_btn:active {
     color: white;
-    outline: none;
 }
 
 .sticky {

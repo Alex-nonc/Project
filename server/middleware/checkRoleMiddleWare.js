@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 
+// Проверка прав (не актуально)
+
 module.exports = function(role){
     return function(req, res, next) {
         if (req.method === 'OPTIONS') {

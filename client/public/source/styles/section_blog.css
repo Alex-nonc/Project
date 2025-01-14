@@ -1,5 +1,5 @@
 .comment_user_block {
-  position: absolute;
+  position: fixed;
   left: 80%;
   top: 60%;
   transform: translate(-50%, -50%);
@@ -9,8 +9,11 @@
 
 .textarea_comment_user_block {
   resize: none;
+  background-color: rgb(231, 229, 229);
   height: 400px;
   width: 600px;
+  border-width: 5px;
+  border-color: #0b63f6;
   border-radius: 10px;
   border-bottom: 2vh;
   font-family: Tahoma;
@@ -47,20 +50,43 @@
 }
 
 .comments_blocks {
+  flex-direction: column;
   position: absolute;
-  left: 10%;
-  top: 20%;
+  left: 20%;
+  top: 25%;
   transform: translate(-50%, -50%);
   text-align: center;
   font-size: 24px;
 }
 
 .textarea_comment_block {
+  background-color: rgb(231, 229, 229);
   resize: none;
   height: 200px;
-  width: 300px;
-  border-radius: 10px;
+  color:black;
+  width: 600px;
+  border-color: #0b63f6;
   border-bottom: 2vh;
+  border-width: 5px;
   font-family: Tahoma;
-  font-size: 16px;
+  font-size: 18px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.lbl_comment_block {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+  width: 610px;
+  background-color:cadetblue;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.comment_position {
+  padding-top: 100px;
+  padding-left: 70px;
 }

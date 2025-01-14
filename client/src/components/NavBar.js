@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { Context } from "../index";
-import { observer } from "mobx-react-lite";
+import { observer } from "mobx-react-lite"; // Функция для наблюдения состояния
 import { NavLink, useLocation } from "react-router-dom";
-import { BRON_ROUTE, LOGIN_ROUTE, MAIN_ROUTE } from "../utils/consts";
-import { BLOG_ROUTE } from "../utils/consts";
+import { BRON_ROUTE, LOGIN_ROUTE, MAIN_ROUTE, BLOG_ROUTE } from "../utils/consts";
+
+// Отрисовка навигационного меню
 
 const NavBar = observer(() => {
   const { user } = useContext(Context);
-  const locate = useLocation();
+  const locate = useLocation(); // Вывод, на каком роуте пользователь сейчас находимся
 
   let header;
 
@@ -34,7 +35,7 @@ const NavBar = observer(() => {
         </li>
         {
     user.isAuth ? (
-        <button className="login_main_btn" onClick={() => user.setIsAuth(false)}>Выход</button>
+        <button className="login_main_btn" onClick={() => {user.setIsAuth(false); alert("Вы вышли из аккаунта")}}>Выход</button>
     ) : (
         <button className="login_main_btn"
         >

@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
 import { useState, useEffect } from "react";
-import { createBooking, createContactData, getOneContactData } from "../http/clientAPI";
+import { createBooking, createContactData, getLastOne } from "../http/clientAPI";
 
 const Bron = observer(() => {
   const [currentId, setCurrentId] = React.useState(1);
@@ -10,7 +10,7 @@ const Bron = observer(() => {
 
   // Билеты
 
-  const [counts, setCounts] = useState({
+  const [counts, setCounts] = useState({ // Хранилище сумм каждой категории товаров
     price1: 0,
     price2: 0,
     price3: 0,
@@ -23,6 +23,8 @@ const Bron = observer(() => {
     price3: 600, // Студенческий
     price4: 1000, // VIP zone
   };
+
+  // Функция добавления билета
 
   const addTicket = (type) => {
     if (booking_summ_prices.length >= 10) {
@@ -38,6 +40,8 @@ const Bron = observer(() => {
     updateFinalPrice([...booking_summ_prices, newTicket]);
   };
 
+  // Функция удаления билета
+
   const removeTicket = (index) => {
     const ticketToRemove = booking_summ_prices[index];
     const newTickets = booking_summ_prices.filter((_, i) => i !== index);
@@ -51,6 +55,8 @@ const Bron = observer(() => {
     updateFinalPrice(newTickets);
   };
 
+  // Функция счета общей суммы билетов
+
   const updateFinalPrice = (updatedTickets) => {
     const total = updatedTickets.reduce((acc, ticket) => acc + ticket.price, 0);
     setFinalPrice(total);
@@ -63,9 +69,11 @@ const Bron = observer(() => {
   const [dates, setDates] = useState([]);
   const [booking_date, setSelectedDate] = useState(null);
 
-  useEffect(() => {
+  useEffect(() => { // Обновление календаря при выборе даты
     updateCalendar();
   }, [currentDate, booking_date]);
+
+  // Функция календаря при выборе даты
 
   const updateCalendar = () => {
     const currentYear = currentDate.getFullYear();
@@ -76,7 +84,7 @@ const Bron = observer(() => {
     const totalDays = lastDay.getDate();
     const lastDayIndex = lastDay.getDay();
 
-    let datesArray = [];
+    let datesArray = []; // Хранилище дат (дней-месяцев-годов)
 
     // Даты предыдущего месяца
     const prevMonthDays = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
@@ -100,8 +108,10 @@ const Bron = observer(() => {
       datesArray.push({ day: i, active: false, inactive: true });
     }
 
-    setDates(datesArray);
+    setDates(datesArray); // Запись дат после обновления
   };
+
+  // Кнопка для предыдущей даты
 
   const prevBtn = () => {
     setCurrentDate(
@@ -109,11 +119,15 @@ const Bron = observer(() => {
     );
   };
 
+  // Кнопка для следующей даты 
+
   const nextBtn = () => {
     setCurrentDate(
       new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
     );
   };
+
+  // Запоминание выбора даты
 
   const handleDateClick = (day) => {
     const newSelectedDate = new Date(
@@ -123,6 +137,8 @@ const Bron = observer(() => {
     );
     setSelectedDate(newSelectedDate);
   };
+
+  // Вывод даты между кнопок
 
   const monthYearString = currentDate.toLocaleString("default", {
     month: "long",
@@ -170,39 +186,71 @@ const Bron = observer(() => {
       return;
     }
 
-    if (contact_data_email && !emailRegex.test(contact_data_email)) {
-      alert("Введите корректный email или оставьте поле пустым");
+    if (!contact_data_email && !emailRegex.test(contact_data_email)) {
+      alert("Введите корректный email");
       return;
     }
 
     try {
       let data1
+      let data2
+      let data3
+      let data4
+      data3 = await getLastOne()
+      data4 = data3.data.contact_data_id
       data1 = await createContactData(
         contact_data_name,
         contact_data_surname,
         contact_data_email,
-        contact_data_phone
-      );
-      let contact_dataID
-      contact_dataID = await getOneContactData(contact_data_name, contact_data_surname, contact_data_phone);
-      let data2
-      for (const i in counts){
-        if (counts[i] === 0){
-          continue;
-        }
-        else {
-          data2 = await createBooking(
-            booking_quantity,
-            booking_summ_prices,
-            booking_date,
-            contact_dataID,
-            1
-          );
-        }
+        contact_data_phone,
+      )
+      if (counts.price1 != 0){
+        data2 = await createBooking(
+          counts.price1,
+          booking_quantity,
+          booking_date,
+          data4+1,
+          1
+        )
+      }
+      if (counts.price2 != 0){
+        data2 = await createBooking(
+          counts.price2,
+          booking_quantity,
+          booking_date,
+          data4+1,
+          2
+        )
+      }
+      if (counts.price3 != 0){
+        data2 = await createBooking(
+          counts.price3,
+          booking_quantity,
+          booking_date,
+          data4+1,
+          3
+        )
+      }
+      if (counts.price4 != 0){
+        data2 = await createBooking(
+          counts.price4,
+          booking_quantity,
+          booking_date,
+          data4+1,
+          4
+        )
       }
       alert("Форма заполнена корректно!");
     } catch (e) {
-      alert(e.message);
+      alert("Повторите операцию");
+      console.log("Костыль")
+      let data1
+      data1 = await createContactData(
+        "-",
+        "-",
+        "-",
+        "-",
+      )
     }
   };
 
@@ -544,7 +592,7 @@ const Bron = observer(() => {
                       <input
                         type="email"
                         id="em"
-                        placeholder="email(необязательно)"
+                        placeholder="email"
                         value={contact_data_email}
                         onChange={(e) => setEmail(e.target.value)}
                       />

@@ -7,6 +7,7 @@ const router = new Router()
 
 router.post('/registration', signupController.registration)
 router.post('/login', signupController.login)
+router.post('/getName', signupController.getName)
 router.get('/auth', authMiddleware, signupController.logcheck)
 router.delete('/delete', signupController.delete)
 
