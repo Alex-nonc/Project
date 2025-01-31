@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=TildaSans&display=swap');
 html {
     height: 100%;
     overflow-x: hidden;
@@ -401,6 +402,7 @@ line-height: 36px
   font-size: 16px;
   line-height: 1.35;
   font-family: 'TildaSans',Arial,sans-serif;
+  transition: 0.3s;
 }
 .content.active>h2 {
     text-align: center;
@@ -431,16 +433,20 @@ line-height: 36px
 .tab:hover {
 
     color: #0073e6;
+    transition: color 0.3s;
 }
 .tab.active {
     color: #0073e6;
     border-bottom: 2px solid #0073e6;
+    transition: color 0.3s;
 }
 .content {
     display: none;
+    transition:0.3s;
 }
 .content.active {
     display: block;
+    transition:0.3s;
 }
 .content.active>ul>p {
     font-size: 18px;

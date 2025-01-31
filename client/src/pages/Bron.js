@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { MAIN_ROUTE } from '../utils/consts';
+import Calendar1 from '../components/Calendar1';
+import Tabs1 from '../components/Tabs.jsx';
 
 const Bron = () => {
     return (
@@ -44,203 +46,13 @@ const Bron = () => {
     <div className="background">
       <div className="cards">
         <div className="card" style={{ justifyContent: "space-around" }}>
-          <p style={{ fontSize: 30, paddingTop: 30 }}>Выбор даты</p>
-          <div className="calendar">
-            <div className="calendar_header">
-              <button id="prevBtn" onclick = {() => this.prevBtn()}>
-                <img
-                  src="images/chevron-left-solid.svg"
-                  style={{ width: 13 }}
-                  alt=""
-                />
-              </button>
-              <div className="mounthYear" id="mounthYear" onclick="mounthYearClick" />
-              <button id="nextBtn" onclick={() => this.nextBtn()}>
-                <img
-                  src="images/chevron-right-solid.svg"
-                  style={{ width: 13 }}
-                  alt=""
-                />
-              </button>
-            </div>
-            <div className="days">
-              <div className="day">Mon</div>
-              <div className="day">Tue</div>
-              <div className="day">Wed</div>
-              <div className="day">Thu</div>
-              <div className="day">Fri</div>
-              <div className="day">Sat</div>
-              <div className="day">Sun</div>
-            </div>
-            <div className="dates" id="dates" />
-          </div>
+          <p>Выбор даты</p>
+          <Calendar1 />
         </div>
-        <div style={{ marginInline: "2vw" }} className="card">
-          <div className="tab-menu">
-            <div className="bron-tabs">
-              <div
-                className="bron-tab active"
-                onclick="changerulesslides(event,'grown')"
-              >
-                Взрослый
-              </div>
-              <div className="bron-tab" onclick="changerulesslides(event,'child')">
-                Детский
-              </div>
-              <div className="bron-tab" onclick="changerulesslides(event,'student')">
-                Студенческий
-              </div>
-              <div
-                className="bron-tab"
-                onclick="changerulesslides(event,'VIP zone')"
-              >
-                VIP zone
-              </div>
-            </div>
-            <div id="grown" className="bron-content active">
-              <div className="text-container">
-                <div className="text-row">
-                  - Возможность пользоваться всеми преимуществами комплекса.
-                </div>
-                <div
-                  style={{ backgroundColor: "#d3d3d3cc" }}
-                  className="text-row"
-                >
-                  - Тариф от открытия до закрытия комплекса.
-                </div>
-                <div className="text-row">
-                  - Гарантия того, что вам достанется жезлонг.
-                </div>
-                <div
-                  style={{ backgroundColor: "#d3d3d3cc" }}
-                  className="text-row"
-                >
-                  - Обеспечение безопасности в воде и за ее пределами.
-                </div>
-                <div className="text-row">
-                  Возможность приобретения алкоголя и кальянов.
-                </div>
-                <div
-                  style={{ backgroundColor: "#f89224", color: "#fff" }}
-                  className="text-row"
-                >
-                  Цена : 800 руб
-                </div>
-              </div>
-              <button id="buy1">В корзину</button>
-            </div>
-            <div id="child" className="bron-content">
-              <div className="text-container">
-                <div className="text-row">
-                  - Возможность пользоваться всеми преимуществами комплекса.
-                </div>
-                <div
-                  style={{ backgroundColor: "#d3d3d3cc" }}
-                  className="text-row"
-                >
-                  - Тариф от открытия до закрытия комплекса.
-                </div>
-                <div className="text-row">
-                  - Гарантия того, что вам достанется жезлонг.
-                </div>
-                <div
-                  style={{ backgroundColor: "#d3d3d3cc" }}
-                  className="text-row"
-                >
-                  - Обеспечение безопасности в воде и за ее пределами.
-                </div>
-                <div
-                  style={{ backgroundColor: "#f89224", color: "#fff" }}
-                  className="text-row"
-                >
-                  Цена : 500 руб
-                </div>
-              </div>
-              <button id="buy2">В корзину</button>
-            </div>
-            <div id="student" className="bron-content">
-              <div className="text-container">
-                <div className="text-row">
-                  - Возможность пользоваться всеми преимуществами комплекса.
-                </div>
-                <div
-                  style={{ backgroundColor: "#d3d3d3cc" }}
-                  className="text-row"
-                >
-                  - Тариф от открытия до закрытия комплекса.
-                </div>
-                <div className="text-row">
-                  - Гарантия того, что вам достанется жезлонг.
-                </div>
-                <div
-                  style={{ backgroundColor: "#d3d3d3cc" }}
-                  className="text-row"
-                >
-                  - Обеспечение безопасности в воде и за ее пределами.
-                </div>
-                <div className="text-row">
-                  Возможность приобретения алкоголя и кальянов.
-                </div>
-                <div
-                  style={{ backgroundColor: "#f89224", color: "#fff" }}
-                  className="text-row"
-                >
-                  Цена : 600 руб
-                </div>
-              </div>
-              <button id="buy3">В корзину</button>
-            </div>
-            <div id="VIP zone" className="bron-content">
-              <div className="text-container">
-                <div className="text-row">
-                  - Возможность пользоваться всеми преимуществами комплекса.
-                </div>
-                <div
-                  style={{ backgroundColor: "#d3d3d3cc" }}
-                  className="text-row"
-                >
-                  - Тариф от открытия до закрытия комплекса.
-                </div>
-                <div className="text-row">
-                  - Гарантия того, что вам достанется жезлонг.
-                </div>
-                <div
-                  style={{ backgroundColor: "#d3d3d3cc" }}
-                  className="text-row"
-                >
-                  - Обеспечение безопасности в воде и за ее пределами.
-                </div>
-                <div className="text-row">
-                  Возможность приобретения алкоголя и кальянов.
-                </div>
-                <div
-                  style={{ backgroundColor: "#d3d3d3cc" }}
-                  className="text-row"
-                >
-                  Возможно находится на отдельной территории, где вас не
-                  потревожат
-                </div>
-                <div
-                  style={{ backgroundColor: "#f89224", color: "#fff" }}
-                  className="text-row"
-                >
-                  Цена : 1000 руб
-                </div>
-              </div>
-              <button id="buy4">В корзину</button>
-            </div>
-          </div>
-        </div>
-        <div style={{ marginInline: "2vw" }} className="card">
-          <div className="count" style={{ justifyContent: "end" }}>
-            <div className="final-count">
-              <div className="count-container" id="count-container" />
-              <div className="final-count-text" id="final-count-text">
-                Цена: 0
-              </div>
-            </div>
-          </div>
-        </div>
+        
+          <Tabs1 />
+     
+        
         <div className="card">
           <div className="inp">
             <div className="titl">Ввод данных пользователя</div>

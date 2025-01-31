@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+.calendar {
+    
+    width: 400px;
+    
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 70px;
+    background-color: #fff;
+    border-radius: 5%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.calendar_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-family: 'Pacifico', sans-serif;
+    font-size: 20px;
+}
+.calendar_header button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+.days {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+}
+.day {
+    text-align: center;
+    padding: 5px;
+    color:#999FA6;
+    
+
+}
+.dates {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    gap:0px;
+}
+.date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3px;
+    margin: auto;
+    cursor: pointer;
+    font-weight: 0;
+    font-size: 20px;
+    font-family: 'Pacifico', sans-serif;
+    border-radius: 50%;
+    width: 20px;
+    height:30px;
+    transition: 0.2s;
+}
+.date:hover, .date.active{
+    background: #f89224;
+    color:#fff;
+
+}
+.date.inactive {
+    color:  #676767;
+    cursor: default
+}
+.date.inactive:hover {
+    color: #676767;
+    
+    background-color: transparent;
+}
+
+.monthYear {
+    text-align: center;
+    font-weight: 100;
+    
+}
